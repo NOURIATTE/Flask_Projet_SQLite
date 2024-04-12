@@ -48,11 +48,11 @@ def Readfiche(post_id):
     conn.close()
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
-@app.route('/fiche_client/<string:nom>')
+@app.route('/fiche_nom/<string:nom>')
 def Readfiche1(nom):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM clients WHERE id = ?', (nom,))
+    cursor.execute('SELECT * FROM clients WHERE nom = ?', (nom,))
     data = cursor.fetchall()
     conn.close()
     # Rendre le template HTML et transmettre les données
